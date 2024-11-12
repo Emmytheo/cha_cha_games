@@ -158,7 +158,7 @@ class DraughtsGameScreen extends StatelessWidget {
     if (block.men != null) {
       Men men = block.men!;
       menWidget = Center(
-        child: buildMenWidget(player: men.player, isKing: men.isKing, size: 38),
+        child: buildMenWidget(player: men.player, isKing: men.isKing, size: 36),
       );
 
       // Make draggable only if it's the current player's turn and their piece
@@ -184,8 +184,8 @@ class DraughtsGameScreen extends StatelessWidget {
     return DragTarget<Men>(
       builder: (context, candidateData, rejectedData) {
         return Container(
-          width: 40,
-          height: 40,
+          width: 38,
+          height: 38,
           color: colorBackground,
           margin: const EdgeInsets.all(2),
           child: menWidget,
