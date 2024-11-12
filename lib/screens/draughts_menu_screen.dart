@@ -21,7 +21,7 @@ class _DraughtsMenuScreenState extends State<DraughtsMenuScreen> {
         Provider.of<DraughtsGameProvider>(context, listen: false);
 
     // Connect to the WebSocket server here when the menu screen loads
-    draughtsProvider.connectToServer("ws://${server_url}:8080");
+    draughtsProvider.connectToServer("ws${server_url}/draughts/");
 
     
 
@@ -158,7 +158,7 @@ class DraughtsGameList extends StatelessWidget {
                             ),
                             child: ListTile(
                               title: Text(
-                                'Game ID: ${game['gameId'].toString().split('-')[0]}-****',
+                                'Game ID: ${game['gameId'].toString().split('-')[0]}',
                                 style: GoogleFonts.inter(
                                     fontWeight: FontWeight.bold,
                                     // fontSize: 18,

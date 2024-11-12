@@ -96,7 +96,7 @@ class WhotGameProvider extends GameProvider {
               playerz!.add(otherPlyer);
             }
           }
-          print('Initial playerz ${playerz!.length}');
+          // print('Initial playerz ${playerz!.length}');
           // game.players = [player];
           break;
 
@@ -226,7 +226,7 @@ class WhotGameProvider extends GameProvider {
   Future<void> setupGame(GameModel game) async {
     // Set up the main player (human)
     WebSocketChannel mainChannel = WebSocketChannel.connect(
-        Uri.parse('ws://${server_url}:8800/game/${game.game_id}'));
+        Uri.parse('ws${server_url}/whot/game/${game.game_id}'));
     await mainChannel.ready;
     await createPlayer('You', true, mainChannel);
   }
@@ -235,7 +235,7 @@ class WhotGameProvider extends GameProvider {
     // Create bot players
     for (int i = 1; i < maxPlayers!; i++) {
       WebSocketChannel botChannel = WebSocketChannel.connect(
-          Uri.parse('ws://${server_url}:8800/game/${game.game_id}'));
+          Uri.parse('ws${server_url}/whot/game/${game.game_id}'));
       await botChannel.ready;
       await createBot('Bot $i', false, botChannel);
     }

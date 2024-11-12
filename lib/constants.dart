@@ -18,7 +18,7 @@ Color chachaDarkColor() => const Color.fromRGBO(45, 0, 42, 0.52);
 Color chachaVeryLightColor() => const Color.fromRGBO(246, 198, 237, 0.32);
 
 
-String server_url = kIsWeb ? "127.0.0.1" : "10.0.2.2";
+String server_url = "s://whot-server-5pyq.onrender.com";
 
 
 const List<dynamic> Games = [
