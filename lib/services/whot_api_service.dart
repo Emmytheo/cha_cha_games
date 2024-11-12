@@ -6,7 +6,7 @@ import "package:http/http.dart" as http;
 import 'package:flutter/foundation.dart';
 
 class WhotApiService {
-  final baseUrl = "http$server_url/whot/";
+  final baseUrl = "http$server_url/whot";
 
   // // Helper function to construct the URL with parameters
   // Uri _url(String path, Map<String, dynamic> params) {
