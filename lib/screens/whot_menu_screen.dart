@@ -1,4 +1,5 @@
 import 'package:cha_cha_games/constants.dart';
+import 'package:cha_cha_games/game_server.dart';
 import 'package:cha_cha_games/models/game_model.dart';
 import 'package:cha_cha_games/providers/whot_game_provider.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _WhotMenuScreenState extends State<WhotMenuScreen> {
                 Consumer<WhotGameProvider>(builder: (context, provider, child) {
               return FloatingActionButton(
                 onPressed: () =>
-                    {provider.createNewGame(), provider.listGames()},
+                    {provider.createNewGameWithDefaults(), provider.listGames()},
                 child: const Icon(Icons.add),
               );
             }),
@@ -134,6 +135,8 @@ class _WhotMenuScreenState extends State<WhotMenuScreen> {
 
 class WhotGameList extends StatelessWidget {
   final List<GameModel>? games;
+  
+
   const WhotGameList({Key? key, this.games}) : super(key: key);
 
   @override
@@ -167,7 +170,8 @@ class WhotGameList extends StatelessWidget {
                           child: ListTile(
                               // tileColor: const Color(0xffc16c34),
                               title: Text(
-                                'Game #${game.game_id}',
+                                // 'Game #${game.game_id} - ${provider.servers[index].serverCountry} - (${game.players} / ${game.noOfPlayers}) Players ',
+                                '${provider.servers[index].serverCountry} - (${game.players} / ${game.noOfPlayers}) Players ',
                                 style: GoogleFonts.inter(
                                     fontWeight: FontWeight.bold,
                                     // fontSize: 18,
@@ -176,7 +180,8 @@ class WhotGameList extends StatelessWidget {
                                     color: Colors.white),
                               ),
                               subtitle: Text(
-                                '(${game.players} / ${game.noOfPlayers}) Players - ${game.listeners} Listeners',
+                                // '(${game.players} / ${game.noOfPlayers}) Players - ${game.listeners} Listeners',
+                                'Entry Fee: \$${provider.servers[index].entryFee.toInt()} \nPrize: \$${provider.servers[index].price.toInt()}',
                                 style: GoogleFonts.inter(
                                     fontWeight: FontWeight.normal,
                                     // fontSize: 18,
@@ -234,7 +239,7 @@ class WhotGameList extends StatelessWidget {
                                                 context, '/whotGame');
                                           },
                                           child: Text(
-                                            'Start Game',
+                                            'Join Game',
                                             style: GoogleFonts.inter(
                                                 fontWeight: FontWeight.bold,
                                                 // fontSize: 18,

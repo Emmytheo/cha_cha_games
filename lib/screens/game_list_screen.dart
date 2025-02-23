@@ -64,7 +64,7 @@ class _GameListScreenState extends State<GameListScreen> {
                   icon: const Icon(Icons.menu),
                   color: Colors.white,
                   onPressed: () {
-                    Scaffold.of(context).openDrawer();
+                    // Scaffold.of(context).openDrawer();
                   },
                 );
               },
@@ -158,79 +158,79 @@ class _GameListScreenState extends State<GameListScreen> {
             currentIndex: _selectedIndex, //New
             onTap: _onItemTapped, //New
           ),
-          drawer: Drawer(
-            child: Container(
-              decoration: chachaBackground(),
-              child: ListView(
-                // Important: Remove any padding from the ListView.
-                padding: EdgeInsets.zero,
-                children: [
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: chachaAppBarColor(),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        "assets/images/logo.png",
-                        width: 128,
-                        height: 128,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(246, 198, 237, 0.36),
-                      borderRadius: BorderRadius.circular(8),
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //     color: Colors.black26,
-                      //     blurRadius: 5,
-                      //     offset: Offset(0, 2),
-                      //   ),
-                      // ],
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Item 1',
-                        style: GoogleFonts.inter(color: Colors.white),
-                      ),
-                      onTap: () {
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-                  ),
-                  Container(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(246, 198, 237, 0.36),
-                      borderRadius: BorderRadius.circular(8),
-                      // boxShadow: const [
-                      //   BoxShadow(
-                      //     color: Colors.black26,
-                      //     blurRadius: 5,
-                      //     offset: Offset(0, 2),
-                      //   ),
-                      // ],
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Item 2',
-                        style: GoogleFonts.inter(color: Colors.white),
-                      ),
-                      onTap: () {
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          // drawer: Drawer(
+          //   child: Container(
+          //     decoration: chachaBackground(),
+          //     child: ListView(
+          //       // Important: Remove any padding from the ListView.
+          //       padding: EdgeInsets.zero,
+          //       children: [
+          //         DrawerHeader(
+          //           decoration: BoxDecoration(
+          //             color: chachaAppBarColor(),
+          //           ),
+          //           child: Center(
+          //             child: Image.asset(
+          //               "assets/images/logo.png",
+          //               width: 128,
+          //               height: 128,
+          //             ),
+          //           ),
+          //         ),
+          //         Container(
+          //           margin:
+          //               const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          //           decoration: BoxDecoration(
+          //             color: const Color.fromRGBO(246, 198, 237, 0.36),
+          //             borderRadius: BorderRadius.circular(8),
+          //             // boxShadow: const [
+          //             //   BoxShadow(
+          //             //     color: Colors.black26,
+          //             //     blurRadius: 5,
+          //             //     offset: Offset(0, 2),
+          //             //   ),
+          //             // ],
+          //           ),
+          //           child: ListTile(
+          //             title: Text(
+          //               'Item 1',
+          //               style: GoogleFonts.inter(color: Colors.white),
+          //             ),
+          //             onTap: () {
+          //               // Update the state of the app.
+          //               // ...
+          //             },
+          //           ),
+          //         ),
+          //         Container(
+          //           margin:
+          //               const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          //           decoration: BoxDecoration(
+          //             color: const Color.fromRGBO(246, 198, 237, 0.36),
+          //             borderRadius: BorderRadius.circular(8),
+          //             // boxShadow: const [
+          //             //   BoxShadow(
+          //             //     color: Colors.black26,
+          //             //     blurRadius: 5,
+          //             //     offset: Offset(0, 2),
+          //             //   ),
+          //             // ],
+          //           ),
+          //           child: ListTile(
+          //             title: Text(
+          //               'Item 2',
+          //               style: GoogleFonts.inter(color: Colors.white),
+          //             ),
+          //             onTap: () {
+          //               // Update the state of the app.
+          //               // ...
+          //             },
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           body: IndexedStack(
             index: _selectedIndex,
             children: _pages,

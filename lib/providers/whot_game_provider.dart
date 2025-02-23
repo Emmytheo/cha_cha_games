@@ -4,6 +4,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:cha_cha_games/components/create_whot_game_modal.dart';
 import 'package:cha_cha_games/components/suit_chooser_modal.dart';
 import 'package:cha_cha_games/constants.dart';
+import 'package:cha_cha_games/game_server.dart';
 import 'package:cha_cha_games/main.dart';
 import 'package:cha_cha_games/models/card_model.dart';
 import 'package:cha_cha_games/models/deck_model.dart';
@@ -52,6 +53,8 @@ class WhotGameProvider extends GameProvider {
   WhotCardModel? get discardTopp => _discardz!.isEmpty ? null : _discardz?.last;
 
   bool gameStart = false;
+
+  List<GameServer> servers = generateRandomGameServers(1, []);
 
   // Function to create a player and set up its channel listener
   Future<void> createPlayer(
@@ -245,6 +248,10 @@ class WhotGameProvider extends GameProvider {
     final games = await _service.listGames();
     // print(games.toJson());
     gameList = games;
+    servers = generateRandomGameServers(
+        gameList != null ? gameList!.length : 1, servers);
+
+    print(servers[0].serverCountry);
     notifyListeners();
   }
 
@@ -255,7 +262,7 @@ class WhotGameProvider extends GameProvider {
 
   Future<GameModel> newWhotGame(int maxPlayers) async {
     final new_game = await _service.newGame(playerCount: maxPlayers);
-    // notifyListeners();
+    notifyListeners();
     return new_game;
   }
 
@@ -360,6 +367,16 @@ class WhotGameProvider extends GameProvider {
       builder: (_) => const CreateWhotGameModal(),
       barrierDismissible: true,
     );
+    notifyListeners();
+  }
+
+  Future<void> createNewGameWithDefaults() async {
+    try {
+      final game = await newWhotGame(4);
+      final response = [game.toJson()];
+    } catch (e) {
+      print('Error: $e');
+    }
     notifyListeners();
   }
 

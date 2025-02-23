@@ -74,3 +74,6 @@ BoxDecoration chachaBackground() {
     ),
   );
 }
+
+
+// Create a random list of objects containing the fields: server country, entry fee and price
